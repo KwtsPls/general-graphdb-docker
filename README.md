@@ -12,4 +12,4 @@ To run the docker container image run:
 
       sudo docker run --name graphdb-container -p 7200:7200 graphdb
 
-After a short delay vqa_server will be online on http://localhost:7200
+A GraphDB instance will be online on http://localhost:7200
