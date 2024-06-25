@@ -29,24 +29,21 @@ RUN apt-get update \
 RUN wget "https://maven.ontotext.com/repository/owlim-releases/com/ontotext/graphdb/graphdb/${GRAPH_DB_VERSION}/graphdb-${GRAPH_DB_VERSION}-dist.zip" \
 	&& unzip graphdb-${GRAPH_DB_VERSION}-dist.zip
 
+# Copy and extract the knowledgr graph data
+COPY data/* .
+
 # Download the knowledge graph data
-RUN wget "https://strabon.di.uoa.gr/da4dte_data/da4dte.nt.gz" \
-    && gzip -d da4dte.nt.gz
+RUN gzip -d da4dte.nt.gz
 
-RUN wget "https://strabon.di.uoa.gr/da4dte_data/images.nt.gz" \
-    && gzip -d images.nt.gz
+RUN gzip -d images.nt.gz
 
-RUN wget "https://strabon.di.uoa.gr/da4dte_data/non_satellite_mat_reduced_map.nt.gz" \
-    && gzip -d non_satellite_mat_reduced_map.nt.gz
+RUN gzip -d non_satellite_mat_reduced_map.nt.gz
 
-RUN wget "https://strabon.di.uoa.gr/da4dte_data/s1_mat_intersects_only_map.nt.gz" \
-    && gzip -d s1_mat_intersects_only_map.nt.gz
+RUN gzip -d s1_mat_intersects_only_map.nt.gz
 
-RUN wget "https://strabon.di.uoa.gr/da4dte_data/s2_mat_intersects_only_map.nt.gz" \
-   && gzip -d s2_mat_intersects_only_map.nt.gz
+RUN gzip -d s2_mat_intersects_only_map.nt.gz
 
-RUN wget "https://strabon.di.uoa.gr/da4dte_data/da4dte_en_labels_unique.nt.gz" \
-    && gzip -d da4dte_en_labels_unique.nt.gz
+RUN gzip -d da4dte_en_labels_unique.nt.gz
 
 COPY template.ttl . 
 
