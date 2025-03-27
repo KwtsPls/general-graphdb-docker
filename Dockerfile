@@ -31,7 +31,6 @@ RUN wget "https://maven.ontotext.com/repository/owlim-releases/com/ontotext/grap
 
 # Copy the knowledge graph data
 COPY data/* .
-RUN cat *.nt > runner.nt
 
 # Extract the knowledge graph data
 
@@ -40,5 +39,5 @@ COPY template.ttl .
 EXPOSE 7200
 EXPOSE 7300
 
-RUN ./graphdb-10.6.3/bin/importrdf preload -c template.ttl runner.nt
+RUN ./graphdb-10.6.3/bin/importrdf preload -c template.ttl *.nt
 ENTRYPOINT ["./graphdb-10.6.3/bin/graphdb"]
